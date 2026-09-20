@@ -1,0 +1,2 @@
+0x01D: restore FF -> change 00
+0x01F: restore 00 -> change FF

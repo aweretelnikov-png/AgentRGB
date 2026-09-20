@@ -1,0 +1,6 @@
+{
+  "write_count": 2,
+  "change_sent": true,
+  "restore_sent": true,
+  "error": "Change read-back modified 279 bytes outside primary RGB."
+}

@@ -1,0 +1,16 @@
+{
+  "timestamp": "20260920-135640209",
+  "vid": "0x258A",
+  "pid": "0x010C",
+  "usage_page": "0xFF00",
+  "usage": "0x0001",
+  "feature_report_bytes": 520,
+  "semantic_model_id": "0x03",
+  "psd": "0x00CD",
+  "effect_id": 1,
+  "brightness": 8,
+  "speed": 3,
+  "flags": "0x7",
+  "rgb_absolute_29_31": "#FF0000",
+  "rgb_payload_29_31": "#FFFFFF"
+}

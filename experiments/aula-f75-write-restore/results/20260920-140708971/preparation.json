@@ -1,0 +1,13 @@
+{
+  "source_rgb_offset": "absolute report [29..31]",
+  "source_rgb": "#FF0000",
+  "test_rgb": "#0000FF",
+  "report_length": 520,
+  "report_id": "0x06",
+  "opcode": "0x0A",
+  "length_high_byte_at_7": "0x02",
+  "terminator_offset": "0x202..0x203",
+  "terminator": "5A A5",
+  "normal_write_operations": 2,
+  "hid_write_api_present": false
+}
