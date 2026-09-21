@@ -1,0 +1,509 @@
+{
+  "timestamp": "2026-09-21T14:58:52.7422947Z",
+  "processes": [
+    {
+      "pid": 15732,
+      "parent_pid": 8932,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": null,
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 15936,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "crashpad-handler",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 12232,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "gpu-process",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 12688,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "utility",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 16408,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "utility",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 17176,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 17188,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 16692,
+      "parent_pid": 15732,
+      "name": "codex.exe",
+      "command_line_available": true,
+      "app_server": true,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": null,
+      "listen_kind": null,
+      "product_version": null,
+      "product_name": null
+    },
+    {
+      "pid": 17128,
+      "parent_pid": 16692,
+      "name": "conhost.exe"
+    },
+    {
+      "pid": 17360,
+      "parent_pid": 15732,
+      "name": "codex-computer-use-swift.exe"
+    },
+    {
+      "pid": 17380,
+      "parent_pid": 17360,
+      "name": "conhost.exe"
+    },
+    {
+      "pid": 11704,
+      "parent_pid": 15732,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 17748,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 19392,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 13952,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 14048,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 17640,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 19804,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 20232,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 20240,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 19980,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 6908,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 4748,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 16604,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 16636,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 7208,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 20744,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 21396,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 11676,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 13120,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 17980,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 11808,
+      "parent_pid": 15732,
+      "name": "ChatGPT.exe",
+      "command_line_available": true,
+      "app_server": false,
+      "proxy": false,
+      "daemon": false,
+      "stdio_flag": false,
+      "listen_flag": false,
+      "remote_flag": false,
+      "sock_flag": false,
+      "ws_auth_flag": false,
+      "electron_type": "renderer",
+      "listen_kind": null,
+      "product_version": "153.0.8010.48",
+      "product_name": "Codex"
+    },
+    {
+      "pid": 18820,
+      "parent_pid": 16692,
+      "name": "codex-code-mode-host.exe"
+    },
+    {
+      "pid": 16968,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 20380,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 7824,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 17036,
+      "parent_pid": 15732,
+      "name": "conhost.exe"
+    },
+    {
+      "pid": 13124,
+      "parent_pid": 15732,
+      "name": "powershell.exe"
+    },
+    {
+      "pid": 23124,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 14412,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 19616,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 19568,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 22268,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 1380,
+      "parent_pid": 16692,
+      "name": "node_repl.exe"
+    },
+    {
+      "pid": 11420,
+      "parent_pid": 16692,
+      "name": "cmd.exe"
+    },
+    {
+      "pid": 12208,
+      "parent_pid": 16692,
+      "name": "node.exe"
+    },
+    {
+      "pid": 20892,
+      "parent_pid": 11420,
+      "name": "node.exe"
+    },
+    {
+      "pid": 19732,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 16828,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 25332,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 25868,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 18788,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 3316,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 6444,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 17028,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 6712,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 9232,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 26676,
+      "parent_pid": 11704,
+      "name": "chrome.exe"
+    },
+    {
+      "pid": 26452,
+      "parent_pid": 16692,
+      "name": "pwsh.exe"
+    }
+  ],
+  "tcp_listeners": [],
+  "named_pipes": [
+    {
+      "name": "OpenAI.CodexSandbox.OpenAI.Codex_2p2nqsd0c76g0",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-browser-use-<id>",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-ipc",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-computer-use-<id>",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-browser-use-<id>",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-browser-use-<id>",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-browser-use-<id>",
+      "ownership": "not established"
+    },
+    {
+      "name": "codex-browser-use-<id>",
+      "ownership": "not established"
+    }
+  ],
+  "backend_verification": {
+    "pid": 16692,
+    "parent_pid": 15732,
+    "version": "codex-cli 0.155.0-alpha.9.2",
+    "sha256": "bc45017e8239dc150258f69309ced9df6bbcdf5b8e4f346decf780ac0999e226",
+    "switch_names": [
+      "--analytics-default-enabled"
+    ],
+    "default_user_control_directory_exists": true,
+    "default_user_control_socket_exists": false
+  },
+  "scope": {
+    "process_metadata_only": true,
+    "process_environment_read": false,
+    "process_memory_read": false,
+    "history_methods_called": false,
+    "endpoint_connections_attempted": false
+  }
+}

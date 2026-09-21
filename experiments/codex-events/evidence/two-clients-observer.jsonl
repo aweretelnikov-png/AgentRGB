@@ -1,0 +1,8 @@
+{"sequence": 1, "timestamp": "2026-09-21T07:27:38.195746+00:00", "method": "thread/started", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5"}
+{"sequence": 2, "timestamp": "2026-09-21T07:27:38.371178+00:00", "method": "thread/status/changed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "status": "active", "activeFlags": []}
+{"sequence": 3, "timestamp": "2026-09-21T07:27:50.449678+00:00", "method": "thread/status/changed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "status": "idle", "activeFlags": []}
+{"sequence": 4, "timestamp": "2026-09-21T07:27:50.514846+00:00", "method": "thread/status/changed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "status": "active", "activeFlags": []}
+{"sequence": 5, "timestamp": "2026-09-21T07:27:50.527001+00:00", "method": "turn/started", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "turnId": "01a0c2dd-2ebd-7eb3-b09d-5c9018deee52", "status": "inProgress"}
+{"sequence": 6, "timestamp": "2026-09-21T07:27:53.952500+00:00", "method": "thread/status/changed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "status": "idle", "activeFlags": []}
+{"sequence": 7, "timestamp": "2026-09-21T07:27:53.953499+00:00", "method": "turn/completed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "turnId": "01a0c2dd-2ebd-7eb3-b09d-5c9018deee52", "status": "completed"}
+{"sequence": 8, "timestamp": "2026-09-21T07:27:53.960059+00:00", "method": "thread/status/changed", "threadId": "01a0c2dc-fe04-7763-86a2-69d528dddef5", "status": "notLoaded", "activeFlags": []}

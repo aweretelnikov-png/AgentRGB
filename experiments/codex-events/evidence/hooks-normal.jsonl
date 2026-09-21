@@ -1,0 +1,4 @@
+{"sequence": 1, "timestamp": "2026-09-21T07:17:41.267902+00:00", "hook_event_name": "SessionStart", "session_id": "01a0c2d3-d81e-74f1-8b6f-2d094814c0c2", "permission_mode": "bypassPermissions"}
+{"sequence": 2, "timestamp": "2026-09-21T07:17:41.615226+00:00", "hook_event_name": "UserPromptSubmit", "session_id": "01a0c2d3-d81e-74f1-8b6f-2d094814c0c2", "turn_id": "01a0c2d3-d8a3-7c42-b153-8fd581767cee", "permission_mode": "bypassPermissions"}
+{"sequence": 3, "timestamp": "2026-09-21T07:17:52.206988+00:00", "hook_event_name": "Stop", "session_id": "01a0c2d3-d81e-74f1-8b6f-2d094814c0c2", "turn_id": "01a0c2d3-d8a3-7c42-b153-8fd581767cee", "permission_mode": "bypassPermissions", "stop_hook_active": false}
+{"sequence": 4, "timestamp": "2026-09-21T07:17:52.608765+00:00", "hook_event_name": "SessionEnd", "session_id": "01a0c2d3-d81e-74f1-8b6f-2d094814c0c2"}

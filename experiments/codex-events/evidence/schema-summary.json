@@ -1,0 +1,181 @@
+{
+  "codex_version": "codex-cli 0.155.0-alpha.9.2",
+  "python_version": "3.14.4",
+  "node_version": "v24.15.0",
+  "codex_sha256": "bc45017e8239dc150258f69309ced9df6bbcdf5b8e4f346decf780ac0999e226",
+  "schemas": {
+    "v1/InitializeParams": {
+      "required": [
+        "clientInfo"
+      ],
+      "properties": [
+        "capabilities",
+        "clientInfo"
+      ],
+      "sha256": "6f0094be9a65242ec779a40794cbd4fdfa32fca1e45084a16adfb50501d33ea2"
+    },
+    "v2/HooksListResponse": {
+      "required": [
+        "data"
+      ],
+      "properties": [
+        "data"
+      ],
+      "sha256": "891dd10ef7f78e59631fce05fff2becddb8004b3c0338dbbbd6b4f17ef1fa64f",
+      "HookEventName": {
+        "enum": [
+          "preToolUse",
+          "permissionRequest",
+          "postToolUse",
+          "preCompact",
+          "postCompact",
+          "sessionStart",
+          "sessionEnd",
+          "userPromptSubmit",
+          "subagentStart",
+          "subagentStop",
+          "stop",
+          "interrupt"
+        ],
+        "type": "string"
+      }
+    },
+    "v2/ThreadStartParams": {
+      "required": [],
+      "properties": [
+        "allowProviderModelFallback",
+        "approvalPolicy",
+        "approvalsReviewer",
+        "baseInstructions",
+        "config",
+        "cwd",
+        "daybreakEnabled",
+        "developerInstructions",
+        "dynamicTools",
+        "environments",
+        "ephemeral",
+        "experimentalRawEvents",
+        "historyMode",
+        "mockExperimentalField",
+        "model",
+        "modelProvider",
+        "multiAgentMode",
+        "permissions",
+        "personality",
+        "projectId",
+        "runtimeWorkspaceRoots",
+        "sandbox",
+        "selectedCapabilityRoots",
+        "serviceName",
+        "serviceTier",
+        "sessionStartSource",
+        "threadSource"
+      ],
+      "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de"
+    },
+    "v2/ThreadResumeParams": {
+      "required": [
+        "threadId"
+      ],
+      "properties": [
+        "approvalPolicy",
+        "approvalsReviewer",
+        "baseInstructions",
+        "config",
+        "cwd",
+        "developerInstructions",
+        "excludeTurns",
+        "history",
+        "initialTurnsPage",
+        "model",
+        "modelProvider",
+        "path",
+        "permissions",
+        "personality",
+        "runtimeWorkspaceRoots",
+        "sandbox",
+        "serviceTier",
+        "threadId"
+      ],
+      "sha256": "cc5bb3b25f82073d24af5b6c09e4804ac307467f8400ba5f263fa86f9f0349e6"
+    },
+    "v2/TurnStartedNotification": {
+      "required": [
+        "threadId",
+        "turn"
+      ],
+      "properties": [
+        "threadId",
+        "turn"
+      ],
+      "sha256": "cf35428997e1eed4fe7f3d0318a476e0f210f58a1f7616cf1945e3f1851e8c85",
+      "TurnStatus": {
+        "enum": [
+          "completed",
+          "interrupted",
+          "failed",
+          "inProgress"
+        ],
+        "type": "string"
+      }
+    },
+    "v2/TurnCompletedNotification": {
+      "required": [
+        "threadId",
+        "turn"
+      ],
+      "properties": [
+        "threadId",
+        "turn"
+      ],
+      "sha256": "20052f79e907069a0d7948b93ba0927fa08f9a2faac23a63a0e8e527ae6bf0f7",
+      "TurnStatus": {
+        "enum": [
+          "completed",
+          "interrupted",
+          "failed",
+          "inProgress"
+        ],
+        "type": "string"
+      }
+    },
+    "v2/ServerRequestResolvedNotification": {
+      "required": [
+        "requestId",
+        "threadId"
+      ],
+      "properties": [
+        "requestId",
+        "threadId"
+      ],
+      "sha256": "4f03d586a5af04edd912cad08cc97eceb658e7e06744565e6d41a93e04a55966"
+    },
+    "CommandExecutionRequestApprovalParams": {
+      "required": [
+        "itemId",
+        "startedAtMs",
+        "threadId",
+        "turnId"
+      ],
+      "properties": [
+        "additionalPermissions",
+        "approvalId",
+        "availableDecisions",
+        "command",
+        "commandActions",
+        "cwd",
+        "environmentId",
+        "itemId",
+        "kind",
+        "networkApprovalContext",
+        "proposedExecpolicyAmendment",
+        "proposedNetworkPolicyAmendments",
+        "reason",
+        "startedAtMs",
+        "threadId",
+        "turnId"
+      ],
+      "sha256": "c9728280b8f3204fd729d0fb3d1ca7bb05b1150de26b3653f7163e6a9bd941e7"
+    }
+  }
+}

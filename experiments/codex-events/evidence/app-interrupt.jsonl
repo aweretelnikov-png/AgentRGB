@@ -1,0 +1,5 @@
+{"sequence": 1, "timestamp": "2026-09-21T07:18:34.857641+00:00", "method": "thread/started", "threadId": "01a0c2d4-b3d9-7d23-9e0c-bc13c8664a60"}
+{"sequence": 2, "timestamp": "2026-09-21T07:18:34.878973+00:00", "method": "thread/status/changed", "threadId": "01a0c2d4-b3d9-7d23-9e0c-bc13c8664a60", "status": "active", "activeFlags": []}
+{"sequence": 3, "timestamp": "2026-09-21T07:18:34.878973+00:00", "method": "turn/started", "threadId": "01a0c2d4-b3d9-7d23-9e0c-bc13c8664a60", "turnId": "01a0c2d4-b46b-79d3-a842-bc3bda538c4a", "status": "inProgress"}
+{"sequence": 4, "timestamp": "2026-09-21T07:18:34.881972+00:00", "method": "thread/status/changed", "threadId": "01a0c2d4-b3d9-7d23-9e0c-bc13c8664a60", "status": "idle", "activeFlags": []}
+{"sequence": 5, "timestamp": "2026-09-21T07:18:34.882974+00:00", "method": "turn/completed", "threadId": "01a0c2d4-b3d9-7d23-9e0c-bc13c8664a60", "turnId": "01a0c2d4-b46b-79d3-a842-bc3bda538c4a", "status": "interrupted"}

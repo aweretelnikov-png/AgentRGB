@@ -1,0 +1,15 @@
+{"sequence": 1, "timestamp": "2026-09-21T07:20:45.094866+00:00", "method": "thread/started", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84"}
+{"sequence": 2, "timestamp": "2026-09-21T07:20:45.126623+00:00", "method": "thread/status/changed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "status": "active", "activeFlags": []}
+{"sequence": 3, "timestamp": "2026-09-21T07:20:45.126623+00:00", "method": "turn/started", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "status": "inProgress"}
+{"sequence": 4, "timestamp": "2026-09-21T07:20:51.000478+00:00", "method": "error", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "willRetry": true}
+{"sequence": 5, "timestamp": "2026-09-21T07:20:51.504623+00:00", "method": "error", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "willRetry": true}
+{"sequence": 6, "timestamp": "2026-09-21T07:20:52.484808+00:00", "method": "error", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "willRetry": true}
+{"sequence": 7, "timestamp": "2026-09-21T07:20:54.347966+00:00", "method": "error", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "willRetry": true}
+{"sequence": 8, "timestamp": "2026-09-21T07:21:08.994000+00:00", "method": "thread/status/changed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "status": "active", "activeFlags": ["waitingOnApproval"]}
+{"sequence": 9, "timestamp": "2026-09-21T07:21:08.995106+00:00", "method": "item/started", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "item_type": "commandExecution", "status": "inProgress"}
+{"sequence": 10, "timestamp": "2026-09-21T07:21:08.995106+00:00", "method": "item/commandExecution/requestApproval", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "requestId": 0}
+{"sequence": 11, "timestamp": "2026-09-21T07:25:11.770661+00:00", "method": "serverRequest/resolved", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "requestId": 0}
+{"sequence": 12, "timestamp": "2026-09-21T07:25:11.771668+00:00", "method": "thread/status/changed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "status": "active", "activeFlags": []}
+{"sequence": 13, "timestamp": "2026-09-21T07:25:12.681717+00:00", "method": "item/completed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "item_type": "commandExecution", "status": "completed"}
+{"sequence": 14, "timestamp": "2026-09-21T07:25:19.640116+00:00", "method": "thread/status/changed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "status": "idle", "activeFlags": []}
+{"sequence": 15, "timestamp": "2026-09-21T07:25:19.641139+00:00", "method": "turn/completed", "threadId": "01a0c2d6-b092-7051-ba14-923ff0c76c84", "turnId": "01a0c2d6-b128-7b12-876b-d3ef27c387ef", "status": "completed"}

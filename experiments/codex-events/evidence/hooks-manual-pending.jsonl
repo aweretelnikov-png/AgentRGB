@@ -1,0 +1,4 @@
+{"sequence": 1, "timestamp": "2026-09-21T11:02:19.872885+00:00", "hook_event_name": "SessionStart", "session_id": "01a0c3a1-83aa-7152-a6d3-9fecc738a595", "permission_mode": "default"}
+{"sequence": 2, "timestamp": "2026-09-21T11:02:20.231494+00:00", "hook_event_name": "UserPromptSubmit", "session_id": "01a0c3a1-83aa-7152-a6d3-9fecc738a595", "turn_id": "01a0c3a1-8549-7000-aceb-282f4d175141", "permission_mode": "default"}
+{"sequence": 3, "timestamp": "2026-09-21T11:02:32.731870+00:00", "hook_event_name": "PreToolUse", "session_id": "01a0c3a1-83aa-7152-a6d3-9fecc738a595", "turn_id": "01a0c3a1-8549-7000-aceb-282f4d175141", "permission_mode": "default", "tool_type": "Bash"}
+{"sequence": 4, "timestamp": "2026-09-21T11:02:33.185754+00:00", "hook_event_name": "PermissionRequest", "session_id": "01a0c3a1-83aa-7152-a6d3-9fecc738a595", "turn_id": "01a0c3a1-8549-7000-aceb-282f4d175141", "permission_mode": "default", "tool_type": "Bash"}
