@@ -1,0 +1,9 @@
+{"sequence":1,"timestamp":"2026-09-20T16:52:02.029Z","type":"session_start","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9"}
+{"sequence":2,"timestamp":"2026-09-20T16:52:02.030Z","type":"input","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9","source":"interactive"}
+{"sequence":3,"timestamp":"2026-09-20T16:52:02.030Z","type":"before_agent_start","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9"}
+{"sequence":4,"timestamp":"2026-09-20T16:52:02.031Z","type":"agent_start","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9"}
+{"sequence":5,"timestamp":"2026-09-20T16:52:02.031Z","type":"turn_start","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9","turnIndex":0}
+{"sequence":6,"timestamp":"2026-09-20T16:52:04.706Z","type":"turn_end","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9","stopReason":"stop","turnIndex":0}
+{"sequence":7,"timestamp":"2026-09-20T16:52:04.706Z","type":"agent_end","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9","stopReason":"stop"}
+{"sequence":8,"timestamp":"2026-09-20T16:52:04.707Z","type":"agent_settled","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9"}
+{"sequence":9,"timestamp":"2026-09-20T16:52:04.707Z","type":"session_shutdown","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfbb-5a71-7124-9df6-ed5a7a7b92b9"}

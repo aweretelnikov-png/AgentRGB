@@ -1,0 +1,13 @@
+{"sequence":1,"timestamp":"2026-09-20T16:12:42.327Z","type":"session_start","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}
+{"sequence":2,"timestamp":"2026-09-20T16:12:42.328Z","type":"input","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","source":"interactive"}
+{"sequence":3,"timestamp":"2026-09-20T16:12:42.328Z","type":"before_agent_start","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}
+{"sequence":4,"timestamp":"2026-09-20T16:12:42.329Z","type":"agent_start","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}
+{"sequence":5,"timestamp":"2026-09-20T16:12:42.329Z","type":"turn_start","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","turnIndex":0}
+{"sequence":6,"timestamp":"2026-09-20T16:12:45.022Z","type":"tool_call","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","toolCallId":"call_5cUkb1xibSMtP0OAl0b6WqRI|fc_0bb0b2ffcb5af194016ab005fd17dc87d2baba227c2a827788","toolName":"read"}
+{"sequence":7,"timestamp":"2026-09-20T16:12:45.024Z","type":"tool_result","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","toolCallId":"call_5cUkb1xibSMtP0OAl0b6WqRI|fc_0bb0b2ffcb5af194016ab005fd17dc87d2baba227c2a827788","toolName":"read","isError":true}
+{"sequence":8,"timestamp":"2026-09-20T16:12:45.024Z","type":"turn_end","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","turnIndex":0}
+{"sequence":9,"timestamp":"2026-09-20T16:12:45.025Z","type":"turn_start","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","turnIndex":1}
+{"sequence":10,"timestamp":"2026-09-20T16:12:46.093Z","type":"turn_end","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7","turnIndex":1}
+{"sequence":11,"timestamp":"2026-09-20T16:12:46.093Z","type":"agent_end","mode":"print","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}
+{"sequence":12,"timestamp":"2026-09-20T16:12:46.094Z","type":"agent_settled","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}
+{"sequence":13,"timestamp":"2026-09-20T16:12:46.094Z","type":"session_shutdown","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf97-5962-74b7-8802-a2a1036407b7"}

@@ -1,0 +1,6 @@
+{"sequence":1,"type":"session"}
+{"sequence":2,"type":"agent_start"}
+{"sequence":3,"type":"turn_start"}
+{"sequence":4,"type":"turn_end"}
+{"sequence":5,"type":"agent_end","willRetry":false}
+{"sequence":6,"type":"agent_settled"}

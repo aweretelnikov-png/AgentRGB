@@ -1,0 +1,9 @@
+{"sequence":1,"timestamp":"2026-09-20T16:15:42.103Z","type":"session_start","mode":"json","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}
+{"sequence":2,"timestamp":"2026-09-20T16:15:42.104Z","type":"input","mode":"json","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf","source":"interactive"}
+{"sequence":3,"timestamp":"2026-09-20T16:15:42.104Z","type":"before_agent_start","mode":"json","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}
+{"sequence":4,"timestamp":"2026-09-20T16:15:42.105Z","type":"agent_start","mode":"json","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}
+{"sequence":5,"timestamp":"2026-09-20T16:15:42.105Z","type":"turn_start","mode":"json","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf","turnIndex":0}
+{"sequence":6,"timestamp":"2026-09-20T16:15:44.581Z","type":"turn_end","mode":"json","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf","turnIndex":0}
+{"sequence":7,"timestamp":"2026-09-20T16:15:44.581Z","type":"agent_end","mode":"json","isIdle":false,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}
+{"sequence":8,"timestamp":"2026-09-20T16:15:44.582Z","type":"agent_settled","mode":"json","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}
+{"sequence":9,"timestamp":"2026-09-20T16:15:44.582Z","type":"session_shutdown","mode":"json","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9a-1785-75c4-9c64-7ce6d32f53bf"}

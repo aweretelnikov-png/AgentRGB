@@ -1,0 +1,4 @@
+{"sequence":1,"timestamp":"2026-09-20T16:47:13.080Z","type":"session_start","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfb6-f23c-70fb-9965-1c67f29d9951"}
+{"sequence":2,"timestamp":"2026-09-20T16:47:31.301Z","type":"ui_prompt_start","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfb6-f23c-70fb-9965-1c67f29d9951","kind":"confirm"}
+{"sequence":3,"timestamp":"2026-09-20T16:47:45.239Z","type":"ui_prompt_end","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfb6-f23c-70fb-9965-1c67f29d9951"}
+{"sequence":4,"timestamp":"2026-09-20T16:47:46.422Z","type":"session_shutdown","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bfb6-f23c-70fb-9965-1c67f29d9951"}

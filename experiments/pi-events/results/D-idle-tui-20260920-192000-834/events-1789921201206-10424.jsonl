@@ -1,0 +1,2 @@
+{"sequence":1,"timestamp":"2026-09-20T16:20:01.259Z","type":"session_start","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9e-0bf3-728e-be1d-a5fb1daffd7e"}
+{"sequence":2,"timestamp":"2026-09-20T16:20:24.822Z","type":"session_shutdown","mode":"tui","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf9e-0bf3-728e-be1d-a5fb1daffd7e"}

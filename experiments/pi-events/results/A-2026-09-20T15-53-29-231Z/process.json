@@ -1,0 +1,8 @@
+{
+  "scenario": "A",
+  "mode": "print",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "rawOutputSaved": false
+}

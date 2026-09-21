@@ -1,0 +1,3 @@
+{"sequence":1,"timestamp":"2026-09-20T16:10:58.403Z","type":"session_start","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf95-c38d-71cb-ad27-c2db1c886ead"}
+{"sequence":2,"timestamp":"2026-09-20T16:10:58.404Z","type":"input","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf95-c38d-71cb-ad27-c2db1c886ead","source":"interactive"}
+{"sequence":3,"timestamp":"2026-09-20T16:10:58.405Z","type":"session_shutdown","mode":"print","isIdle":true,"hasPendingMessages":false,"sessionId":"01a0bf95-c38d-71cb-ad27-c2db1c886ead"}
