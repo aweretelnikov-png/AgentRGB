@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-09-24T07:15:55.255322+00:00", "status": "read_only_identified", "direct_frames": 0, "mutating_writes": 0, "read_requests_82": 1, "identity": {"vid": "258A", "pid": "010C", "collection": "MI_01/COL06", "usage_page": "FF00", "usage": "0001", "feature_bytes": 520, "report_id": "06", "model": "03", "psd": "00CD"}, "handle_closed": true}

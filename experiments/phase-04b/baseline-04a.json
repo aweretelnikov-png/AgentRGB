@@ -1,0 +1,7 @@
+{
+  "src/agentrgb/state.py": "9d7b5987b650f0b35276a4ea05d3dd27bb624092069d0f2d2069bc60aa46f79d",
+  "src/agentrgb/protocol.py": "e6a400f6582f12dc897b0dfd80f15a68f8847a7a8afa8ddeb1652be838c37bc8",
+  "src/agentrgb/fake.py": "e548a76dc4423335a61eef7ed586c771b4f9e8907a1cbf9c09db00b211982643",
+  "src/agentrgb/server.py": "0afcae51b3a7fe433625821f2a2f1d4154cb8e03f211c16458bb4ccf294b80cf",
+  "integrations/pi/agentrgb.ts": "38abea9b5d92f54d146faf90e2f1f5aa14dd9b43bee46fe0815c9645f26cd7c5"
+}

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+
+# Локальные трассы и аппаратные ответы остаются вне MVP-коммита.
+/experiments/phase-04a/results/
+/experiments/phase-04b/results/
+/experiments/phase-04c/results/
+/experiments/phase-04a/*.diff
+/experiments/phase-04b/*.diff
+/experiments/phase-04b/research/upstream.json

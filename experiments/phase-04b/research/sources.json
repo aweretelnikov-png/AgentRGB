@@ -1,0 +1,78 @@
+{
+  "repository": "https://github.com/free-soldier28/Aula-Manager",
+  "commit": "b98c0afad7ae57bbd4f073230c1ee1cb87006318",
+  "files": [
+    {
+      "path": "docs/PROTOCOL.md",
+      "sha256": "9abef125b333bc1de5a6c7d357e54cc74466d844158c5ae9bcd5a8bf043f3b82"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "53d0f004c050d7aac65dfdcab974d4934181e94f8a335c9450e37a4f37e8f549"
+    },
+    {
+      "path": "src/Aula.App/ViewModels/LightingViewModel.cs",
+      "sha256": "499d95c4311fa2c53f942bef3e8889ff49e597b784c7afd6e53958541e2261de"
+    },
+    {
+      "path": "src/Aula.Core/Models/EffectLibrary.cs",
+      "sha256": "be7345bf27e5c052650c95717d7823f8227b8163b9f5f39a6e43d49b2d2fd3cf"
+    },
+    {
+      "path": "src/Aula.Core/Models/KeyboardConfig.cs",
+      "sha256": "b6e5fc4d3e7f37ec7964eef011640be2353b39cd7c17c810ad1224b42ed4816f"
+    },
+    {
+      "path": "src/Aula.Core/Models/KeyboardProfile.cs",
+      "sha256": "4d1e051d169241e4357038b7f0f6f9c71dce0b601ff6af0e0f3c9ab22d8d7d4f"
+    },
+    {
+      "path": "src/Aula.Core/Models/ModelConfig.cs",
+      "sha256": "3e0df80a12818801fabc03d45b90994e27a3403ef46b793bc7bc43311db373fe"
+    },
+    {
+      "path": "src/Aula.Core/Protocol/F75Report.cs",
+      "sha256": "36db3e4c6460d14c06c84090ecf081c9a5715b2cb4284b8b120f2b057a063978"
+    },
+    {
+      "path": "src/Aula.Core/Protocol/SinowealthProtocol.cs",
+      "sha256": "edf531390b440a34356276607299a1e8ea34a61fbeaf62c29f19f30b99e06613"
+    },
+    {
+      "path": "src/Aula.Core/Services/LightingConfig.cs",
+      "sha256": "2c0c153e9d8aff07f492dc33cb7d7d397c1fe94b1db5136e0bfb2d8816e0984c"
+    },
+    {
+      "path": "src/Aula.Core/Services/LightingService.cs",
+      "sha256": "9301951741f104a7a70b1267539cf9973eb63b14acf00dc5fde0b9cd58904fed"
+    },
+    {
+      "path": "src/Aula.Core/Services/ProfileService.cs",
+      "sha256": "4ade99b2fb5e2d44a1f0f05c35625d45bdd3d3d4e45575840f44bbe5a4323cc3"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/F75ReportTests.cs",
+      "sha256": "c84c7184342b7c5bc39934d5209166285448bc661993e791769e78ed30aca763"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/KeyboardConfigTests.cs",
+      "sha256": "bc51c3b90188617e0e838ee02d6dd8fd1db48c756e51436a46e0562902bf17f9"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/LightingServiceTests.cs",
+      "sha256": "3206842c9bdcaff727093c08a88885a8fdce9785aecc306994de1331f3e53b7f"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/ModelConfigTests.cs",
+      "sha256": "9b52f3aa7705ce9394563863efbf13a324b93f9811780da5610aed85340e01ee"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/ProfileServiceTests.cs",
+      "sha256": "725a0cd2671f454d34b48dfdebbc50c2cfc90c9c94ccfee8ead93c311f02090d"
+    },
+    {
+      "path": "tests/Aula.Core.Tests/SinowealthProtocolTests.cs",
+      "sha256": "0ac7af0fca7578bee0af39f46e6d132daace536398fb24ec9aec452f9d62ab2f"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "timestamp_utc": "2026-09-24T07:18:48Z",
+  "source": "user_visual_confirmation",
+  "observed_color_sequence": ["blue", "yellow", "blue", "green"],
+  "original_static_multicolor_profile_returned": true,
+  "additional_hardware_runs": 0
+}

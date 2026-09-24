@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentRGB F75 — WebHID metadata</title>
+<style>
+  body { max-width: 68rem; margin: 2rem auto; padding: 0 1rem; font: 16px/1.45 system-ui, sans-serif; }
+  button { padding: .6rem 1rem; font: inherit; }
+  pre { overflow: auto; padding: 1rem; background: #eee; white-space: pre-wrap; }
+</style>
+<h1>AULA F75: WebHID metadata</h1>
+<p>Страница читает только metadata выбранного HIDDevice. Устройство не открывается; reports не отправляются.</p>
+<button id="choose" type="button">Выбрать AULA F75</button>
+<p id="status" role="status">Ожидание выбора.</p>
+<pre id="result" aria-label="Обезличенный JSON"></pre>
+<script type="module">
+  import { snapshotDevice } from './snapshot.mjs';
+
+  const button = document.getElementById('choose');
+  const status = document.getElementById('status');
+  const result = document.getElementById('result');
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    status.textContent = 'Ожидание ручного выбора в Chromium WebHID dialog…';
+    result.textContent = '';
+    try {
+      if (!window.isSecureContext || !navigator.hid) {
+        throw new Error('WebHID недоступен в этом secure context');
+      }
+      const devices = await navigator.hid.requestDevice({
+        filters: [{ vendorId: 0x258A, productId: 0x010C }],
+      });
+      if (devices.length === 0) {
+        status.textContent = 'Выбор отменён.';
+        return;
+      }
+      const snapshot = snapshotDevice(devices[0]);
+      result.textContent = JSON.stringify(snapshot, null, 2);
+      const saved = await fetch('/snapshot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(snapshot),
+      });
+      if (!saved.ok) throw new Error(`Не удалось сохранить JSON: HTTP ${saved.status}`);
+      status.textContent = 'Metadata сохранены локально. HIDDevice не открывался.';
+    } catch (error) {
+      status.textContent = `Ошибка: ${error?.name ?? 'Error'}: ${error?.message ?? String(error)}`;
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+</html>

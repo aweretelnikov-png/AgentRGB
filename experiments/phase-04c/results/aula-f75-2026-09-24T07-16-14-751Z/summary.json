@@ -1,0 +1,48 @@
+{
+  "mode": "aula-f75",
+  "status": "passed",
+  "deviation": null,
+  "timedOut": false,
+  "uiRequested": true,
+  "settled": true,
+  "completed": true,
+  "piResult": {
+    "code": 0,
+    "signal": null
+  },
+  "piEvents": [
+    "agent_start",
+    "ui_prompt_start",
+    "ui_prompt_end",
+    "agent_end",
+    "agent_settled"
+  ],
+  "coreEvents": [
+    "run_started",
+    "run_waiting",
+    "run_resumed",
+    "run_ended"
+  ],
+  "visible": [
+    "working",
+    "waiting",
+    "working",
+    "completed"
+  ],
+  "idle": true,
+  "frameCount": 608,
+  "frameColors": [
+    "0000FF",
+    "FFFF00",
+    "0000FF",
+    "00FF00"
+  ],
+  "firstFrameUtc": "2026-09-24T07:16:16.347042+00:00",
+  "lastFrameUtc": "2026-09-24T07:16:57.043907+00:00",
+  "handleClosed": true,
+  "workerStopped": true,
+  "coreShutdown": true,
+  "listenerClosed": true,
+  "maxSeconds": 150,
+  "maxDirectFrames": 3000
+}

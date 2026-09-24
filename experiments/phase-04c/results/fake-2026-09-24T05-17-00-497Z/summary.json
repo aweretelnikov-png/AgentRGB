@@ -1,0 +1,43 @@
+{
+  "mode": "fake",
+  "status": "passed",
+  "deviation": null,
+  "timedOut": false,
+  "uiRequested": true,
+  "settled": true,
+  "completed": true,
+  "piResult": {
+    "code": 0,
+    "signal": null
+  },
+  "piEvents": [
+    "agent_start",
+    "ui_prompt_start",
+    "ui_prompt_end",
+    "agent_end",
+    "agent_settled"
+  ],
+  "coreEvents": [
+    "run_started",
+    "run_waiting",
+    "run_resumed",
+    "run_ended"
+  ],
+  "visible": [
+    "working",
+    "waiting",
+    "working",
+    "completed"
+  ],
+  "idle": true,
+  "frameCount": 0,
+  "frameColors": [],
+  "firstFrameUtc": null,
+  "lastFrameUtc": null,
+  "handleClosed": false,
+  "workerStopped": false,
+  "coreShutdown": true,
+  "listenerClosed": true,
+  "maxSeconds": 150,
+  "maxDirectFrames": 0
+}
