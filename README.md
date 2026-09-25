@@ -27,6 +27,62 @@ AgentRGB работает локально на Windows, не требует у�
 
 AULA F75 работает через volatile Direct Mode `0x06/0x08`: пока AgentRGB управляет цветом, он посылает heartbeat. Он не переписывает пользовательский lighting profile при обычной работе. После прекращения кадров клавиатура самостоятельно возвращает свой профиль, как наблюдалось на проверенном устройстве. По умолчанию Core использует `fake`; аппаратный выход включается только явным `--output aula-f75`.
 
+## Development install
+
+Нужен Python 3.14 или новее; полный suite проверен на Python 3.14.4. Из корня репозитория в PowerShell:
+
+```powershell
+python -m pip install -e .
+agentrgb --help
+```
+
+Текущая версия пакета — `0.1.0.dev0`. Runtime-зависимостей нет; после установки `PYTHONPATH` не требуется.
+
+## Start
+
+Для проводной AULA F75:
+
+```powershell
+agentrgb start --output aula-f75
+```
+
+Core работает в текущем терминале; `Ctrl+C` штатно завершает его работу. `agentrgb start` без параметров использует `fake`. Прежний запуск `python -m agentrgb.server --output aula-f75` сохранён.
+
+## Check
+
+В другом терминале:
+
+```powershell
+agentrgb status
+agentrgb doctor
+```
+
+`status` проверяет локальный Core через HTTP без обращения к HID: `running` даёт код `0`, `not running` или `unavailable` — код `1`. Это проверка доступности Core, а не состояния агента или RGB-выхода.
+
+`doctor` проверяет Python, версию установленного AgentRGB, импорты production-модулей, Core, порт и identity F75. Identity read использует служебный запрос `SetFeature` с opcode `0x82` и `GetFeature`, без Direct-кадров и изменения RGB/profile. Отсутствующее, неоднозначное или неподходящее устройство, ошибка проверки, отсутствие обязательных компонентов или недоступный/занятый другим процессом порт дают код `1`. Если всё готово, код `0`; незапущенный Core при свободном порте этому не мешает. Ошибки аргументов дают код `2`.
+
+Все команды и Pi extension используют `AGENTRGB_PORT` (по умолчанию `8765`). При изменении порта задайте одинаковое значение в их терминалах. CLI принимает целое число от `1` до `65535`; неверное значение даёт код `2`.
+
+## Pi
+
+После запуска Core запустите Pi из корня репозитория:
+
+```powershell
+pi -e ./integrations/pi/agentrgb.ts
+```
+
+Phase 05B будет посвящена Pi package и автоматическому запуску Core.
+
+## Проверки
+
+После development install программные тесты не требуют реальной клавиатуры:
+
+```powershell
+python -m unittest discover -s tests
+node --test tests/pi-adapter.test.mjs tests/webhid-diagnostic.test.mjs experiments/pi-events/recorder.test.mjs
+git diff --check
+```
+
 ## Документы
 
 - [`docs/VISION.md`](docs/VISION.md) — проблема, цель и принципы проекта.

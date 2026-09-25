@@ -89,6 +89,18 @@ class Handler(BaseHTTPRequestHandler):
         except (socket.timeout, ConnectionError):
             self.close_connection = True
 
+    def do_GET(self):
+        if self.path != "/health":
+            return self.reply(404, "not_found")
+        body = b'{"status":"ok","service":"agentrgb"}'
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Connection", "close")
+        self.end_headers()
+        self.wfile.write(body)
+        self.close_connection = True
+
     def receive(self):
         if self.path != "/v1/events":
             return self.reply(404, "not_found")
@@ -120,10 +132,10 @@ class Handler(BaseHTTPRequestHandler):
         self.reply(200, status)
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", choices=("fake", "aula-f75"), default="fake")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     port = int(os.environ.get("AGENTRGB_PORT", "8765"))
     if not 1 <= port <= 65535:
