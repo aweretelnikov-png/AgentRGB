@@ -144,7 +144,7 @@ test('down, hanging, error and invalid response do not break handlers', async ()
 test('extension registers lifecycle hooks only', () => {
   const names = [];
   extension({ on(type) { names.push(type); } });
-  assert.deepEqual(names, ['agent_start', 'agent_end', 'agent_settled', 'ui_prompt_start', 'ui_prompt_end']);
+  assert.deepEqual(names, ['session_start', 'session_shutdown', 'agent_start', 'agent_end', 'agent_settled', 'ui_prompt_start', 'ui_prompt_end']);
 });
 
 test('burst against hanging Core has one deadline, no accumulated waits', async () => {

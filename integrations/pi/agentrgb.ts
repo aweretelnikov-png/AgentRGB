@@ -1,6 +1,7 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { randomUUID } from "node:crypto";
 import { Agent, request } from "node:http";
+import { createCoreSession } from "./core.ts";
 
 export type LifecycleEvent = {
   schema_version: 1;
@@ -112,8 +113,14 @@ export function createAdapter(send: (event: LifecycleEvent) => void | Promise<vo
 }
 
 export default function agentrgb(pi: ExtensionAPI) {
-  const handle = createAdapter(createDelivery());
+  const core = createCoreSession();
+  let handle: ReturnType<typeof createAdapter> | undefined;
+  pi.on("session_start", async (_event, ctx) => {
+    await core.start(ctx);
+    if (!handle && core.connected) handle = createAdapter(createDelivery());
+  });
+  pi.on("session_shutdown", () => core.shutdown());
   for (const type of ["agent_start", "agent_end", "agent_settled", "ui_prompt_start", "ui_prompt_end"] as const) {
-    pi.on(type, (event, ctx) => handle(type, event, ctx));
+    pi.on(type, (event, ctx) => { if (core.connected) return handle?.(type, event, ctx); });
   }
 }

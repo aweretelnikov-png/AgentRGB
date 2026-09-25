@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import socket
+import sys
 import threading
 
 from .protocol import MAX_BODY, validate
@@ -147,6 +148,16 @@ def main(argv=None):
         output = FakeOutput()
     with EventServer(port, Core(output)) as server:
         LOG.info("LISTEN http://127.0.0.1:%d/v1/events", port)
+        if os.environ.get("AGENTRGB_PARENT_STDIO") == "1":
+            def parent_closed():
+                try:
+                    while sys.stdin.buffer.read(1):
+                        pass
+                finally:
+                    server.shutdown()
+
+            threading.Thread(target=parent_closed, daemon=True).start()
+            print("AGENTRGB_READY", flush=True)
         try:
             server.serve_forever(poll_interval=0.05)
         except KeyboardInterrupt:

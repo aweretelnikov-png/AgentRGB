@@ -65,13 +65,28 @@ agentrgb doctor
 
 ## Pi
 
-После запуска Core запустите Pi из корня репозитория:
+Локальная установка из корня репозитория (Python 3.14+, `agentrgb` в PATH процесса Pi):
 
 ```powershell
-pi -e ./integrations/pi/agentrgb.ts
+python -m pip install -e .
+pi install ./integrations/pi
+pi list
+pi
 ```
 
-Phase 05B будет посвящена Pi package и автоматическому запуску Core.
+Пакет загружается без `-e`. При `session_start` он использует существующий Core или запускает `agentrgb start --output aula-f75`; при выходе штатно останавливает только собственный child. Ошибка AgentRGB отключает интеграцию, но не Pi. Ожидание startup ограничено; supervisor и повторная доставка событий не добавлены.
+
+Pi package auto-start в v0.1 рассчитан на проверенную AULA F75 configuration. Для работы без устройства заранее запустите `agentrgb start` (fake): пакет подключится к нему и не остановит при выходе. При нескольких Pi выход владельца Core отключит индикацию остальных; полноценное управление временем жизни для нескольких клиентов отложено.
+
+Одноразовая загрузка без установки: `pi -e ./integrations/pi`. После установки не подключайте extension повторно через `-e ./integrations/pi/agentrgb.ts`. Подробности — [README пакета](integrations/pi/README.md).
+
+Будущий опубликованный flow, **пока недоступный: npm package ещё не опубликован**:
+
+```powershell
+python -m pip install agentrgb
+pi install npm:agentrgb-pi
+pi
+```
 
 ## Проверки
 
@@ -79,7 +94,8 @@ Phase 05B будет посвящена Pi package и автоматическ�
 
 ```powershell
 python -m unittest discover -s tests
-node --test tests/pi-adapter.test.mjs tests/webhid-diagnostic.test.mjs experiments/pi-events/recorder.test.mjs
+$env:AGENTRGB_TEST_PYTHON = python -c "import sys; print(sys.executable)"
+node --test tests/*.test.mjs experiments/pi-events/recorder.test.mjs
 git diff --check
 ```
 
