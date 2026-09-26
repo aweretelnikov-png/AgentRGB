@@ -16,12 +16,12 @@ pi
 Будущий опубликованный flow (пока недоступен):
 
 ```powershell
-python -m pip install agentrgb
+py -3.14 -m pip install agentrgb
 pi install npm:agentrgb-pi
 pi
 ```
 
-**npm package ещё не опубликован.** Имя `agentrgb-pi` предварительное; доступность имени перед публикацией не проверялась.
+**Python и npm packages ещё не опубликованы.** 25 сентября 2026 года реестры вернули HTTP 404 для `agentrgb` и `agentrgb-pi`; это не резервирует имена. Перед публикацией проверку нужно повторить.
 
 ## Запуск и остановка
 
@@ -36,3 +36,7 @@ pi
 Extension передаёт только разрешённые lifecycle metadata, не читает содержимое запросов, ответов и инструментов. Semantics `working/waiting/completed`, идентификаторы и best-effort HTTP сохранены.
 
 Manifest и peer dependencies оформлены по [Pi Packages](https://pi.dev/docs/latest/packages); ресурсы запускаются через [session lifecycle](https://pi.dev/docs/latest/extensions), а не в factory.
+
+## Лицензия
+
+[MIT](LICENSE).

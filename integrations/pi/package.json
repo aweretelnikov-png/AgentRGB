@@ -2,9 +2,10 @@
   "name": "agentrgb-pi",
   "version": "0.1.0-dev.0",
   "description": "Local AgentRGB lifecycle integration for Pi",
+  "license": "MIT",
   "type": "module",
   "keywords": ["pi-package", "agentrgb"],
-  "files": ["agentrgb.ts", "core.ts", "README.md"],
+  "files": ["agentrgb.ts", "core.ts", "README.md", "LICENSE"],
   "pi": { "extensions": ["./agentrgb.ts"] },
   "peerDependencies": { "@earendil-works/pi-coding-agent": "*" }
 }
