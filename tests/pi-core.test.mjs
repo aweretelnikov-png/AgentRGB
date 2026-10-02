@@ -24,10 +24,10 @@ function fixture(answers = [false, true], props = {}) {
     get probes() { return probes; }, get clock() { return clock; } };
 }
 
-test('manifest: package resource, prerelease, peer only, published files', async () => {
+test('manifest: package resource, release SemVer, peer only, published files', async () => {
   const manifest = JSON.parse(await readFile(new URL('../integrations/pi/package.json', import.meta.url)));
   assert.equal(manifest.name, 'agentrgb-pi');
-  assert.match(manifest.version, /-/);
+  assert.match(manifest.version, /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/);
   assert.ok(manifest.keywords.includes('pi-package'));
   assert.deepEqual(manifest.pi.extensions, ['./agentrgb.ts']);
   assert.equal(manifest.peerDependencies['@earendil-works/pi-coding-agent'], '*');

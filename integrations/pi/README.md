@@ -13,7 +13,7 @@ pi
 
 Без сохранения установки: `pi -e ./integrations/pi`. После установки не добавляйте одновременно `-e ./integrations/pi/agentrgb.ts`, чтобы не регистрировать интеграцию дважды.
 
-Будущий опубликованный flow (пока недоступен):
+Публичная установка после production publish:
 
 ```powershell
 py -3.14 -m pip install agentrgb
@@ -21,16 +21,13 @@ pi install npm:agentrgb-pi
 pi
 ```
 
-Текущая версия Pi package — `0.1.0-rc.1`, она готовится к публикации с dist-tag
-`next`. Python `0.1.0rc1` уже опубликован и проверен только в TestPyPI; production
-PyPI и npm release ещё не опубликованы. Проверка npm namespace 2 октября 2026 года
-вернула HTTP 404; это не резервирует имя. Перед upload повторить проверку.
-
-После отдельного разрешения на npm RC publish проверять установку через
-`pi install npm:agentrgb-pi@next` в отдельной Pi-конфигурации с установленным Python RC.
-Это prerelease smoke; финальная установка выше остаётся планом. Auto-start выбирает
-`aula-f75`: для fake owned-Core smoke нужен временный test launcher,
-который проверяет аргументы, выбирает `fake` и блокирует HID.
+Текущая версия Pi package — `0.1.0`; финальные Python/npm артефакты ещё не опубликованы.
+Python RC `0.1.0rc1` проверен из TestPyPI, Pi RC `0.1.0-rc.1` — из npm.
+Пока npm `latest` и `next` указывают на `0.1.0-rc.1`; удаление `latest` вернуло E400,
+повтор не выполнялся. При будущей финальной публикации `latest` должен перейти на `0.1.0`.
+До неё команды выше не подтверждают доступность финального release.
+Auto-start выбирает `aula-f75`: для fake owned-Core smoke используется временный
+launcher, который проверяет аргументы, выбирает `fake` и блокирует HID.
 
 ## Запуск и остановка
 

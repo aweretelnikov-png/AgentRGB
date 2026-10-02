@@ -1,86 +1,50 @@
 # Release checklist: 0.1.0
 
-Проверки относятся к конкретным артефактам. После изменения исходников или metadata
-нужно пересобрать затронутый артефакт и повторить его проверки. План публикации —
-[RELEASING.md](RELEASING.md). Этот этап не включает commit, push, tag или публикацию.
+Все локальные gates относятся к финальным артефактам `0.1.0`, подготовленным
+2 октября 2026: [RELEASE_FINAL.md](RELEASE_FINAL.md). Final release не опубликован.
+После изменения packaged source или metadata пересобрать затронутые артефакты
+и повторить проверки. Процедура: [RELEASING.md](RELEASING.md).
+Исторические [Python RC](RELEASE_RC1.md) и [npm RC](RELEASE_PI_RC1.md) сохранены.
 
-Результаты и границы проверок: [RELEASE_PREP.md](RELEASE_PREP.md). Локальный smoke использовал Pi 0.87.1, fake output и локальный тестовый provider; внешний Core на `8765` не останавливался.
+## Локальная подготовка — PASS
 
-TestPyPI: Python `0.1.0rc1` опубликован и проверен в новом venv из реестра;
-metadata, SHA-256, CLI, default fake Core, Ctrl+C и освобождение порта подтверждены
-в [RELEASE_RC1.md](RELEASE_RC1.md). Чеклист ниже сохраняет локальные gates
-первоначальной подготовки; production publication остаётся отдельным этапом.
-
-Pi npm RC `0.1.0-rc.1` опубликован с `--tag next`; registry install и ordinary Pi
-→ owned fake Core → lifecycle → `/quit` → свободный порт проверены:
-[RELEASE_PI_RC1.md](RELEASE_PI_RC1.md). Registry также назначил `latest` на RC;
-удаление тега отклонено с E400, повтор не выполнялся. Отсутствие `latest`
-не подтверждено; финальный npm release не опубликован.
-
-## Code
-
-- [x] Полный Python suite пройден.
-- [x] Полный Node suite пройден.
+- [x] Production PyPI name read-only lookup: HTTP 404, 2 октября 2026.
+- [x] Python и npm metadata: `0.1.0`; runtime-код и зависимости сохранены.
+- [x] Python full suite: 167/167; Node full suite: 35/35.
 - [x] `git diff --check` без ошибок.
-- [x] Пользовательские `experiments/README.md` и `experiments/manual_scenarios.py` не изменены и не включены в release staging.
+- [x] README содержит публичный сценарий и явное предупреждение, что final release не опубликован.
+- [x] Wheel и sdist собраны с нуля; wheel собран из sdist.
+- [x] `twine check`, metadata, console entry point, MIT LICENSE и точный состав проверены.
+- [x] SHA-256 обоих Python artifacts вычислен.
+- [x] Final wheel установлен в новом venv вне checkout, без editable/PYTHONPATH.
+- [x] CLI help/status/doctor проверены; doctor использовал hardware-blocked backend.
+- [x] Default fake Core: health/running → настоящий Ctrl+C → exit 0 → свободный порт.
+- [x] `npm pack --dry-run` и `npm pack`; ровно пять ожидаемых файлов; SHA-256 вычислен.
+- [x] Final npm tarball установлен во временный prefix, installed files/version подтверждены.
+- [x] Ordinary Pi 1.0.0 → autoload → installed final Python → owned fake Core → lifecycle → `/quit` → Core stopped → свободный порт.
+- [x] HID заблокирован test launcher; внешний model provider и hardware не запускались.
+- [x] Артефакты не содержат experiments, секретов, локальных settings, logs или абсолютных пользовательских путей.
+- [x] `dist/` и `.tgz` ignored и исключены из release staging.
+- [x] Пользовательские `experiments/README.md` и `experiments/manual_scenarios.py` сохранены и исключены из staging.
+- [x] Существующее hardware evidence [Phase 04C](../experiments/phase-04c/RESULTS.md) сохранено; final hardware smoke отдельно.
 
-## Python artifact
+Тестовая подмена `aula-f75` на `fake` подтверждает package installation и lifecycle,
+но не неизменённый аппаратный autostart. Реальный identity read в doctor не проверялся.
+Проверка внешнего Core сохранена в [предыдущем evidence](RELEASE_PREP.md).
 
-- [x] Metadata проверены; лицензия MIT присутствует в артефактах.
-- [x] Wheel собран.
-- [x] Sdist собран; из него собирается wheel.
-- [x] `twine check` пройден для обоих файлов.
-- [x] Состав wheel/sdist проверен; console entry point `agentrgb` присутствует.
-- [x] Wheel установлен в новый venv без editable install.
-- [x] Из каталога вне checkout проверены `--help`, `status`, `doctor` (только identity read).
-- [x] `agentrgb start` с default `fake`: `/health`, `status`, Ctrl+C и освобождение порта.
-- [x] `dist/` игнорируется Git.
+npm `latest` сейчас указывает на `0.1.0-rc.1`, как и `next`; удаление latest
+вернуло E400 и не повторялось. При финальном publish latest должен перейти на
+`0.1.0`; это следует проверить после публикации. На этом этапе tags не менялись.
+PyPI HTTP 404 не резервирует имя; перед upload повторить read-only lookup.
 
-## Pi artifact
+## Внешние шаги — pending
 
-- [x] Metadata и точный список `npm pack --dry-run` проверены.
-- [x] Tarball содержит только `package.json`, `agentrgb.ts`, `core.ts`, `README.md`, `LICENSE`.
-- [x] `.tgz` установлен в отдельное окружение Pi; extension загружен из артефакта.
-- [x] Pi autoload проверен без `-e` и без файлов исходного package в пути загрузки.
-- [x] `.tgz` не включён в Git.
-
-## Integration
-
-- [x] Pi → установленный fake Core: `run_started` и `run_ended` получены.
-- [x] Принадлежащий Pi Core завершается на `/quit`; тестовый порт `18767` освобождается (замена `8765` согласована пользователем).
-- [x] Внешний Core остаётся работать после `/quit`.
-- [x] Интерактивный Pi из каталога вне checkout: tarball autoload → autostart установленного wheel → lifecycle → `/quit`; fake выбран временным тестовым launcher.
-
-Текущий Pi autostart явно выбирает `--output aula-f75`. Без аппаратного запуска
-принадлежащий Pi fake Core можно проверить только тестовой подменой команды запуска.
-Это ограничение проведённого smoke: неизменённый аппаратный autostart не проверен. Для
-проверки внешнего Core достаточно заранее запустить `agentrgb start` с `fake`.
-
-## Hardware
-
-- [x] Для RC используется существующее доказательство [Phase 04C](../experiments/phase-04c/RESULTS.md): Pi → F75, цвета и возврат пользовательского профиля.
-- [ ] Перед public release выполнен один короткий final F75 smoke с отдельного разрешения пользователя.
-
-Phase 04 целиком не повторяется. Аппаратный вывод автоматически не запускается.
-
-## Privacy
-
-- [x] В артефактах нет содержимого запросов и ответов модели.
-- [x] Нет секретов, credentials, `.env` или локальных settings.
-- [x] Нет HID paths и абсолютных пользовательских путей.
-- [x] Нет runtime logs, `experiments/results`, кэшей, `.diff` и временных файлов.
-
-## Publication — только отдельный будущий этап
-
-- [x] Имя `agentrgb` проверено на PyPI (HTTP 404, 25 сентября 2026); повторить непосредственно перед публикацией.
-- [x] Имя `agentrgb-pi` проверено в npm (HTTP 404, 25 сентября 2026); повторить непосредственно перед публикацией.
-- [ ] Согласован финальный version bump, новые артефакты `0.1.0` повторно проверены.
-- [ ] PyPI publish.
-- [ ] npm publish.
-- [ ] Clean public install из PyPI/npm, без checkout.
-- [ ] Final F75 smoke с отдельного разрешения.
+- [ ] PyPI production publish `0.1.0`.
+- [ ] npm publish `0.1.0` и подтверждение `latest → 0.1.0`.
+- [ ] Production registry clean install Python/npm, без checkout.
+- [ ] Final F75 smoke с отдельным разрешением.
 - [ ] Git tag.
-- [ ] GitHub release.
+- [ ] GitHub Release.
 
-Отсутствие пакета в реестре не резервирует имя и не гарантирует разрешение на его
-регистрацию. Если имя занято, остановиться и согласовать другое имя.
+После final preparation commit остановиться: без публикации, dist-tag changes,
+push, tag, GitHub Release и аппаратного запуска.
