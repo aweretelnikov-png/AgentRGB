@@ -3,7 +3,7 @@
 Python `0.1.0rc1` опубликован только в TestPyPI; установка из реестра и fake Core
 smoke проверены: [результаты RC](RELEASE_RC1.md). Production PyPI и npm ещё не
 опубликованы. [Чеклист](RELEASE_CHECKLIST.md) сохраняет результаты локальной подготовки.
-Текущие версии: `0.1.0rc1` (Python) и `0.1.0-dev.0` (Pi). Финальная `0.1.0`
+Текущие версии: `0.1.0rc1` (Python) и `0.1.0-rc.1` (Pi). Финальная `0.1.0`
 предназначена для настоящего релиза. Лицензия — MIT. Команды upload, login, publish,
 tag и GitHub release ниже относятся к будущему этапу с отдельным решением пользователя.
 
@@ -44,7 +44,7 @@ lifecycle, но не является полным обычным запуско
 [руководством PyPA](https://packaging.python.org/en/latest/guides/using-testpypi/).
 
 RC готовится в рабочем checkout: единственный источник Python version —
-`pyproject.toml`. Версия Pi остаётся `0.1.0-dev.0`. Проверки RC и SHA-256
+`pyproject.toml`. Python bump не менял Pi; его отдельный RC описан ниже. Проверки RC и SHA-256
 фиксируются в [RELEASE_RC1.md](RELEASE_RC1.md).
 
 После полного Python/Node suite и `git diff --check` очистить только проверенный
@@ -84,6 +84,48 @@ Runtime dependencies отсутствуют, поэтому дополнител
 Повторить CLI smoke из каталога вне checkout. Этот тест не публикует финальную
 версию и не заменяет будущую установку из настоящего PyPI.
 
+## npm RC: `0.1.0-rc.1`, dist-tag `next`
+
+Python сохраняет `0.1.0rc1`. Результаты Pi RC подготовки фиксируются в
+[RELEASE_PI_RC1.md](RELEASE_PI_RC1.md). Read-only проверить `agentrgb-pi`
+в публичном npm registry непосредственно перед upload; если имя занято чужим
+пакетом, остановиться. Отсутствие имени не гарантирует доступность регистрации.
+
+После полного Python/Node suite и `git diff --check` из `integrations/pi`
+выполнить `npm pack --dry-run`, затем `npm pack`. Ожидаются только LICENSE,
+README.md, agentrgb.ts, core.ts, package.json. Проверить version и SHA-256 `.tgz`.
+Установить именно tarball во временную конфигурацию Pi вне checkout, проверить
+обычный Pi autoload, Core ownership, lifecycle и `/quit` с fake test launcher,
+блокирующим HID. Это безопасная подмена output, а не hardware smoke.
+
+После проверки подготовить commit `chore: prepare Pi package 0.1.0-rc.1`,
+без tarball, пользовательских experiments, push и tag. Публикация требует
+отдельного разрешения. Владелец использует интерактивный npm login/publish с 2FA;
+credentials не сохранять в repo или документации. Требования сверять с
+[официальной npm документацией](https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/).
+Только после разрешения, из каталога проверенного tarball:
+
+```powershell
+npm publish ./agentrgb-pi-0.1.0-rc.1.tgz --tag next --access public --registry=https://registry.npmjs.org/
+```
+
+Не выполнять publish без `--tag next`. После upload проверить npm metadata,
+version, dist-tag и integrity. В совершенно новой Pi test environment выполнить:
+
+```powershell
+pi install npm:agentrgb-pi@next
+pi list
+pi
+```
+
+Подтвердить установленную `0.1.0-rc.1`, extension source из registry installation,
+Python `0.1.0rc1` из TestPyPI environment, ordinary Pi autoload, owned fake Core,
+lifecycle и `/quit` с освобождением порта. Сохранить факт test launcher и отсутствие
+HID writes. Source checkout и local tarball для registry smoke не использовать.
+После успешного smoke остановиться; production PyPI, npm `0.1.0`, tag `latest`,
+git tag и GitHub Release не выполнять. Версию не перезаписывать; исправления
+требуют следующего согласованного RC `0.1.0-rc.2`.
+
 ## Финальные версии
 
 После clean artifact tests и отдельного решения о релизе:
@@ -91,7 +133,7 @@ Runtime dependencies отсутствуют, поэтому дополнител
 | Место | Перед финальной сборкой |
 |---|---|
 | `pyproject.toml`, `project.version` | `0.1.0rc1` → `0.1.0` |
-| `integrations/pi/package.json`, `version` | `0.1.0-dev.0` → `0.1.0` |
+| `integrations/pi/package.json`, `version` | `0.1.0-rc.1` → `0.1.0` |
 | README и инструкции с текущей версией | Обновить на `0.1.0` и убрать пометку planned только после публикации |
 | `tests/test_cli.py` | Проверить mock версии; это тестовая строка, а не источник версии пакета |
 | `tests/pi-core.test.mjs`, manifest test | Сейчас требует дефис в версии (`/-/`); при final bump заменить проверкой, допускающей release SemVer, и обновить название теста |

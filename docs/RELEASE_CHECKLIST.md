@@ -11,6 +11,10 @@ metadata, SHA-256, CLI, default fake Core, Ctrl+C и освобождение п
 в [RELEASE_RC1.md](RELEASE_RC1.md). Чеклист ниже сохраняет локальные gates
 первоначальной подготовки; production publication остаётся отдельным этапом.
 
+Pi npm RC: подготовлена `0.1.0-rc.1`; полный suite и local tarball smoke с
+ordinary Pi и owned fake Core пройдены: [RELEASE_PI_RC1.md](RELEASE_PI_RC1.md).
+Npm publish с `next` и registry smoke ожидают отдельного разрешения.
+
 ## Code
 
 - [x] Полный Python suite пройден.

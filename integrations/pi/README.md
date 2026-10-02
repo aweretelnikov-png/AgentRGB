@@ -21,7 +21,16 @@ pi install npm:agentrgb-pi
 pi
 ```
 
-**Python и npm packages ещё не опубликованы.** 25 сентября 2026 года реестры вернули HTTP 404 для `agentrgb` и `agentrgb-pi`; это не резервирует имена. Перед публикацией проверку нужно повторить.
+Текущая версия Pi package — `0.1.0-rc.1`, она готовится к публикации с dist-tag
+`next`. Python `0.1.0rc1` уже опубликован и проверен только в TestPyPI; production
+PyPI и npm release ещё не опубликованы. Проверка npm namespace 2 октября 2026 года
+вернула HTTP 404; это не резервирует имя. Перед upload повторить проверку.
+
+После отдельного разрешения на npm RC publish проверять установку через
+`pi install npm:agentrgb-pi@next` в отдельной Pi-конфигурации с установленным Python RC.
+Это prerelease smoke; финальная установка выше остаётся планом. Auto-start выбирает
+`aula-f75`: для fake owned-Core smoke нужен временный test launcher,
+который проверяет аргументы, выбирает `fake` и блокирует HID.
 
 ## Запуск и остановка
 
