@@ -1,7 +1,7 @@
 # Ручная подготовка и публикация 0.1.0
 
 Сейчас выполняется только локальная подготовка по [чеклисту](RELEASE_CHECKLIST.md).
-Версии остаются `0.1.0.dev0` (Python) и `0.1.0-dev.0` (Pi). Финальная `0.1.0`
+Текущие версии: `0.1.0rc1` (Python) и `0.1.0-dev.0` (Pi). Финальная `0.1.0`
 предназначена для настоящего релиза. Лицензия — MIT. Команды upload, login, publish,
 tag и GitHub release ниже относятся к будущему этапу с отдельным решением пользователя.
 
@@ -41,53 +41,29 @@ lifecycle, но не является полным обычным запуско
 реестр и отдельная учётная запись. Порядок upload/install сверён с
 [руководством PyPA](https://packaging.python.org/en/latest/guides/using-testpypi/).
 
-Сделать отдельную копию production source из проверенного dev sdist; рабочий
-checkout не менять. Из корня репозитория:
+RC готовится в рабочем checkout: единственный источник Python version —
+`pyproject.toml`. Версия Pi остаётся `0.1.0-dev.0`. Проверки RC и SHA-256
+фиксируются в [RELEASE_RC1.md](RELEASE_RC1.md).
+
+После полного Python/Node suite и `git diff --check` очистить только проверенный
+ignored `dist/`, собрать новые wheel/sdist и проверить их:
 
 ```powershell
-$rcRoot = Join-Path $env:TEMP ("agentrgb-rc-" + [guid]::NewGuid().ToString())
-New-Item -ItemType Directory -Path $rcRoot | Out-Null
-py -3.14 -m tarfile -e .\dist\agentrgb-0.1.0.dev0.tar.gz $rcRoot
-$rcSource = Join-Path $rcRoot 'agentrgb-0.1.0.dev0'
-$rcDist = Join-Path $rcRoot 'dist-rc1'
+py -3.14 -m build
+py -3.14 -m twine check dist/*
+$rcWheel = Join-Path (Get-Location) 'dist/agentrgb-0.1.0rc1-py3-none-any.whl'
+$rcSdist = Join-Path (Get-Location) 'dist/agentrgb-0.1.0rc1.tar.gz'
 ```
 
-Только в `$rcSource\pyproject.toml` заменить `version = "0.1.0.dev0"` на
-`version = "0.1.0rc1"`. Затем проверить metadata и собрать в отдельный каталог:
+Проверить metadata, entry point, LICENSE, README и состав обоих архивов.
+Установить wheel в новый временный venv вне checkout, повторить CLI и default fake
+Core smoke с Ctrl+C и освобождением порта. После проверок допустим отдельный
+commit `chore: prepare 0.1.0rc1`, без push/tag.
+
+Только после явного разрешения пользователя выполнить ручную публикацию:
 
 ```powershell
-py -3.14 -c "import pathlib,sys,tomllib; p=tomllib.loads((pathlib.Path(sys.argv[1])/'pyproject.toml').read_text(encoding='utf-8'))['project']; assert p['name']=='agentrgb' and p['version']=='0.1.0rc1', p" $rcSource
-if ($LASTEXITCODE -ne 0) { throw 'RC metadata mismatch' }
-py -3.14 -m build --outdir $rcDist $rcSource
-if ($LASTEXITCODE -ne 0) { throw 'RC build failed' }
-$rcWheel = Join-Path $rcDist 'agentrgb-0.1.0rc1-py3-none-any.whl'
-$rcSdist = Join-Path $rcDist 'agentrgb-0.1.0rc1.tar.gz'
-py -3.14 -m twine check $rcWheel $rcSdist
-if ($LASTEXITCODE -ne 0) { throw 'RC twine check failed' }
-@'
-import email, sys, tarfile, zipfile
-with zipfile.ZipFile(sys.argv[1]) as archive:
-    names = [n for n in archive.namelist() if n.endswith('.dist-info/METADATA')]
-    assert len(names) == 1
-    wheel = email.message_from_bytes(archive.read(names[0]))
-with tarfile.open(sys.argv[2]) as archive:
-    stream = archive.extractfile('agentrgb-0.1.0rc1/PKG-INFO')
-    assert stream is not None
-    sdist = email.message_from_bytes(stream.read())
-for metadata in (wheel, sdist):
-    assert metadata['Name'] == 'agentrgb'
-    assert metadata['Version'] == '0.1.0rc1', metadata['Version']
-print('Both artifacts: agentrgb 0.1.0rc1')
-'@ | py -3.14 - $rcWheel $rcSdist
-if ($LASTEXITCODE -ne 0) { throw 'RC artifact metadata mismatch' }
-```
-
-Повторить content audit и clean wheel install для RC. Непосредственно перед
-upload снова проверить эти два файла. Только после отдельного решения выполнить
-следующую команду с явным TestPyPI URL и точными именами, без wildcard:
-
-```powershell
-py -3.14 -m twine upload --repository-url https://test.pypi.org/legacy/ $rcWheel $rcSdist
+py -3.14 -m twine upload --repository testpypi $rcWheel $rcSdist
 ```
 
 Credentials вводит владелец вручную через штатный prompt Twine. Не передавать
@@ -97,7 +73,7 @@ Credentials вводит владелец вручную через штатны
 После публикации RC создать ещё один venv вне checkout и установить точную версию:
 
 ```powershell
-$rcVenv = Join-Path $rcRoot 'install-venv'
+$rcVenv = Join-Path $env:TEMP ("agentrgb-testpypi-" + [guid]::NewGuid().ToString())
 py -3.14 -m venv $rcVenv
 & "$rcVenv\Scripts\python.exe" -m pip install --no-deps --only-binary=:all: --index-url https://test.pypi.org/simple/ agentrgb==0.1.0rc1
 ```
@@ -112,7 +88,7 @@ Runtime dependencies отсутствуют, поэтому дополнител
 
 | Место | Перед финальной сборкой |
 |---|---|
-| `pyproject.toml`, `project.version` | `0.1.0.dev0` → `0.1.0` |
+| `pyproject.toml`, `project.version` | `0.1.0rc1` → `0.1.0` |
 | `integrations/pi/package.json`, `version` | `0.1.0-dev.0` → `0.1.0` |
 | README и инструкции с текущей версией | Обновить на `0.1.0` и убрать пометку planned только после публикации |
 | `tests/test_cli.py` | Проверить mock версии; это тестовая строка, а не источник версии пакета |
