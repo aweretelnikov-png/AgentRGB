@@ -2,7 +2,7 @@
 
 AgentRGB показывает состояние Pi coding agent через подсветку клавиатуры. Core работает локально и получает только события жизненного цикла, без содержимого запросов, ответов и инструментов.
 
-Подготовка первой публичной версии `0.1.0` ещё идёт. Текущие локальные версии: Python `0.1.0rc1`, Pi package `0.1.0-rc.1`. Python RC опубликован только в [TestPyPI](https://test.pypi.org/project/agentrgb/0.1.0rc1/); публикация в production PyPI и npm ещё не выполнена.
+Подготовка первой публичной версии `0.1.0` ещё идёт. Текущие RC версии: Python `0.1.0rc1`, Pi package `0.1.0-rc.1`. Python RC опубликован только в [TestPyPI](https://test.pypi.org/project/agentrgb/0.1.0rc1/); Pi RC опубликован в npm с `next`, registry smoke пройден ([evidence](docs/RELEASE_PI_RC1.md)). Registry также назначил `latest` на RC; удаление отклонено с E400. Production PyPI и финальный npm `0.1.0` не опубликованы.
 
 ## Требования
 
@@ -14,7 +14,7 @@ AgentRGB показывает состояние Pi coding agent через по
 
 ## Планируемая публичная установка
 
-**Planned: эти команды предназначены для будущего релиза. Сейчас AgentRGB не опубликован в PyPI и npm.**
+**Planned: эти команды предназначены для будущего релиза. Финальная версия AgentRGB пока не опубликована в PyPI и npm; npm RC устанавливается явно через `pi install npm:agentrgb-pi@next`.**
 
 ```powershell
 py -3.14 -m pip install agentrgb

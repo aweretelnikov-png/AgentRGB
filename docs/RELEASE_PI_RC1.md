@@ -1,4 +1,4 @@
-# Подготовка Pi package 0.1.0-rc.1: 2 октября 2026
+# Pi package 0.1.0-rc.1: публикация и registry smoke, 2 октября 2026
 
 Python TestPyPI evidence зафиксирован отдельным commit
 `8bd5a65 docs: record TestPyPI 0.1.0rc1 validation`.
@@ -13,11 +13,24 @@ Read-only GET `https://registry.npmjs.org/agentrgb-pi` вернул HTTP 404.
 Перед publish повторить lookup. Если пакет уже существует и принадлежность
 владельцу не подтверждена, остановиться и не переименовывать автоматически.
 
-Публикация **пока не выполнялась**. Требуется отдельное разрешение пользователя
-для точного проверенного tarball с dist-tag `next`. `latest` не устанавливать.
-Владелец выполняет интерактивный npm login/publish с 2FA. Credentials не сохранять
-в repo или документации. Актуальные требования:
-[официальная npm документация](https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/).
+Пользователь разрешил публикацию точного проверенного tarball с dist-tag `next`.
+После первоначального E403 и отдельно разрешённых повторных попыток интерактивная
+публикация с 2FA завершилась успешно. Version и содержимое tarball не менялись.
+[Опубликованный npm RC](https://www.npmjs.com/package/agentrgb-pi/v/0.1.0-rc.1).
+
+Registry подтвердил `next=0.1.0-rc.1`, но также назначил `latest=0.1.0-rc.1`,
+хотя publish выполнялся с `--tag next`. Попытка удалить только `latest` завершилась:
+
+```text
+E400 400 Bad Request - DELETE https://registry.npmjs.org/-/package/agentrgb-pi/dist-tags/latest
+```
+
+Слепой повтор удаления не выполнялся. `latest` остаётся на RC: требование отсутствия
+этого тега не достигнуто. Финальная версия `0.1.0` не публиковалась.
+Credentials и OTP вводились интерактивно и не сохранялись в repo или документации.
+Временный launcher вызвал login/publish установленного npm в одном Node process,
+отключив сохранение user config и npm logs; credentials оставались в памяти.
+Это временный способ проверки, а не поддерживаемый API проекта.
 
 ## Проверки и tarball
 
@@ -106,22 +119,43 @@ request body отбрасывался без записи. Внешний мод
 сохранены. Пользовательские `experiments/README.md` и `experiments/manual_scenarios.py`
 не менялись и не staging; их SHA-256 совпадают с предыдущим evidence.
 
-## После разрешения на публикацию
+## Registry installation и integration smoke: PASS
 
-Из каталога проверенного tarball выполнить только:
+В новой временной Pi configuration, с cwd вне checkout, выполнено:
 
 ```powershell
-npm publish ./agentrgb-pi-0.1.0-rc.1.tgz --tag next --access public --registry=https://registry.npmjs.org/
+pi install npm:agentrgb-pi@next
+npm view agentrgb-pi version
+npm view agentrgb-pi dist-tags
+npm view agentrgb-pi@0.1.0-rc.1
 ```
 
-Повторить read-only namespace lookup непосредственно перед upload.
-После upload проверить npm version, `dist-tags.next`, integrity и отсутствие
-непреднамеренного `latest`. В совершенно новой Pi test configuration выполнить
-`pi install npm:agentrgb-pi@next`; подтвердить реально установленную `0.1.0-rc.1`
-из registry, без local tarball и source checkout. Повторить ordinary Pi autoload,
-TestPyPI Python RC, owned fake Core, lifecycle, `/quit` и освобождение порта.
+`pi list` и settings подтвердили единственный package `npm:agentrgb-pi@next`.
+Installed manifest содержит `0.1.0-rc.1`. Lockfile подтверждает registry URL
+`https://registry.npmjs.org/agentrgb-pi/-/agentrgb-pi-0.1.0-rc.1.tgz`
+и SHA-512 integrity выше. Скачанный из registry архив имеет тот же SHA-256,
+что разрешённый tarball; все пять installed files совпали с артефактом.
+Local tarball и source checkout как extension source не использовались.
 
-Registry install и registry integration smoke пока **не выполнены**.
-После успешного smoke остановиться. Python production upload, npm `0.1.0`,
-`latest`, push, git tag, GitHub Release и другие интеграции не выполнять.
+Python сторона — ранее проверенный clean TestPyPI venv с installed
+`agentrgb 0.1.0rc1` из `Lib/site-packages`, без `PYTHONPATH` и editable install.
+Обычный интерактивный Pi 0.87.1 показал autoload
+`agentrgb-pi@next:agentrgb.ts`, без `-e`, RPC или print mode.
+Использованы описанные выше временный fake launcher с блокировкой HID и локальный
+детерминированный provider. Внешний модельный provider и аппаратный autostart
+не проверялись. Пользовательская Pi configuration не менялась.
+
+Подтверждён полный путь:
+
+1. Registry package → autoload → ровно один принадлежащий Pi fake Core.
+2. `/health`: HTTP 200; installed CLI `status`: running, exit 0.
+3. `run_started` и `run_ended`: оба `applied`, итог `completed`.
+4. `/quit`: Pi exit 0, Core `core_closed` и `exited`; PID исчез.
+5. Exclusive bind подтвердил свободный порт `52335`.
+
+Тестовый provider остановлен. Hardware writes не выполнялись.
+Пользовательские experiment files сохранены; их SHA-256 не изменились.
+Python production upload, npm `0.1.0`, push, git tag, GitHub Release и другие
+интеграции не выполнялись. Работа остановлена после registry smoke.
+Удаление `latest` осталось неуспешным с E400; повтор не выполнялся.
 Опубликованную RC version не перезаписывать; исправления требуют `0.1.0-rc.2`.
