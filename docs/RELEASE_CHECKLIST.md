@@ -6,6 +6,11 @@
 
 Результаты и границы проверок: [RELEASE_PREP.md](RELEASE_PREP.md). Локальный smoke использовал Pi 0.87.1, fake output и локальный тестовый provider; внешний Core на `8765` не останавливался.
 
+TestPyPI: Python `0.1.0rc1` опубликован и проверен в новом venv из реестра;
+metadata, SHA-256, CLI, default fake Core, Ctrl+C и освобождение порта подтверждены
+в [RELEASE_RC1.md](RELEASE_RC1.md). Чеклист ниже сохраняет локальные gates
+первоначальной подготовки; production publication остаётся отдельным этапом.
+
 ## Code
 
 - [x] Полный Python suite пройден.

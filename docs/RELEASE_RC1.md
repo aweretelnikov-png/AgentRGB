@@ -11,12 +11,22 @@ Read-only GET `https://test.pypi.org/pypi/agentrgb/json` вернул HTTP 404.
 PowerShell/curl не смогли установить TLS в runner; GET выполнен через
 Python urllib с обычной проверкой сертификата.
 
-Публикация пока не выполнялась: требуется явное разрешение пользователя и ручной
-ввод TestPyPI API token через prompt Twine. Credentials не читались и не сохранялись.
-Ожидаемые адреса после upload:
-[проект](https://test.pypi.org/project/agentrgb/),
-[версия](https://test.pypi.org/project/agentrgb/0.1.0rc1/).
-Наличие этих страниц до публикации не подтверждено.
+После явного разрешения пользователя оба проверенных архива опубликованы
+вручную через Twine с TestPyPI API token в скрытом prompt.
+Credentials не передавались в чат и не сохранялись агентом.
+Подтверждены [проект](https://test.pypi.org/project/agentrgb/)
+и [версия](https://test.pypi.org/project/agentrgb/0.1.0rc1/).
+GET `https://test.pypi.org/pypi/agentrgb/0.1.0rc1/json` вернул HTTP 200:
+`agentrgb`, `0.1.0rc1`, Python `>=3.14`, MIT, Markdown README,
+runtime dependencies отсутствуют. Реестр содержит ровно два файла этой версии;
+SHA-256 обоих совпадают с таблицей ниже.
+Upload timestamps из реестра: wheel — `2026-10-02T12:17:54.109884Z`,
+sdist — `2026-10-02T12:17:55.630143Z` (UTC).
+
+Локальные архивы первоначально принадлежали sandbox account и были недоступны
+для чтения из пользовательского PowerShell. Только этим двум файлам добавлено
+право чтения для владельца рабочей учётной записи. Вне sandbox подтверждены
+чтение, неизменность SHA-256 и `twine check` PASSED; пересборка не выполнялась.
 
 ## Проверки и сборка
 
@@ -38,8 +48,8 @@ Python urllib с обычной проверкой сертификата.
 Wheel содержит 16 файлов, sdist — 21. Metadata обоих archives:
 `Name: agentrgb`, `Version: 0.1.0rc1`, runtime dependencies отсутствуют.
 Entry point `agentrgb = agentrgb.cli:main` присутствует; LICENSE побайтово
-совпадает с исходным, README в metadata совпадает с текущим README после
-нормализации переводов строк. Все production `.py` совпадают с checkout.
+совпадает с исходным, README в metadata совпадает с README на момент сборки
+после нормализации переводов строк. Все production `.py` совпадают с checkout.
 
 Проверены имена и содержимое всех файлов: experiments, tests, `.env`, кэши,
 runtime logs и абсолютные пользовательские пути отсутствуют; распространённые
@@ -72,7 +82,7 @@ CLI запускается вне checkout, без `PYTHONPATH`.
 Smoke проверяет default fake output; стандартный порт 8765 этим прогоном не проверен.
 F75 output не запускался; identity диагностика не нашла устройства.
 
-## Git и оставшиеся шаги
+## Git и границы работы
 
 В RC commit входят только `pyproject.toml`, `README.md`, `docs/RELEASING.md`
 и этот отчёт. Пользовательские файлы не менялись и не staging:
@@ -85,9 +95,46 @@ F75 output не запускался; identity диагностика не на�
 `dist/` не входит в staging. Push, tag, production upload, npm publish и
 GitHub Release не выполнялись.
 
-После разрешённого ручного TestPyPI upload требуется новый venv и установка
-строго из TestPyPI `agentrgb==0.1.0rc1` с `--no-deps`, вне checkout, без local wheel,
-editable install и `PYTHONPATH`. Пока сетевая установка и TestPyPI smoke
-**не выполнены**. Дополнить этот отчёт фактически скачанной версией и результатами
-CLI, default fake Core, Ctrl+C и освобождения порта. После успешного smoke остановиться.
+## Установка из TestPyPI и smoke
+
+После публикации создан совершенно новый venv вне checkout. Python 3.14.4,
+pip 26.0.1. Из внешнего временного каталога выполнено:
+
+```powershell
+python -m pip --isolated install --index-url https://test.pypi.org/simple/ --no-deps --no-cache-dir --only-binary=:all: --report pip-report.json agentrgb==0.1.0rc1
+```
+
+Pip сообщил `Successfully installed agentrgb-0.1.0rc1`. `pip-report.json`
+подтвердил единственный установленный пакет, версию `0.1.0rc1`, `is_direct=false`
+и загрузку wheel с `https://test-files.pythonhosted.org/packages/d8/8f/5b2f0b3e8147595ca5e626edd2ab16337d51fcd732265a2d2bfc0d8b25cf/agentrgb-0.1.0rc1-py3-none-any.whl`.
+SHA-256 скачанного wheel совпадает с локальным проверенным архивом.
+Дополнительный индекс, local wheel и editable install не использовались.
+
+Импорт подтверждён из `venv/Lib/site-packages/agentrgb`, installed distribution
+сообщил `0.1.0rc1`; `direct_url.json` отсутствует. Все CLI вызовы выполнялись
+вне checkout, с удалённым из process environment `PYTHONPATH`.
+
+- `agentrgb --help`: exit 0.
+- До start: `status` — `not running`, exit 1.
+- `doctor`: Python 3.14.4, AgentRGB 0.1.0rc1, production imports OK,
+  порт свободен; `AULA F75: not found`, ожидаемый exit 1.
+- Default fake Core запущен без output override на свободном временном порту `62967`.
+- `/health`: HTTP 200, `{"status":"ok","service":"agentrgb"}`.
+- `status`: `running`, exit 0.
+- Настоящий Windows `CTRL_C_EVENT`: штатный exit 0, forced termination не понадобился.
+- Exclusive bind подтвердил освобождение порта после выхода.
+
+Как и в локальном smoke, console bootstrap только сбрасывал унаследованное
+игнорирование Ctrl+C и запускал установленный CLI module без изменения кода.
+Подтверждён default fake output; стандартный порт 8765 не проверялся.
+Аппаратный F75 output не запускался.
+
+RC commit: `f29c55b1866bfad94188c245dc546c46a8392c25`.
+После сетевого smoke обновлена только release documentation и актуальный статус
+в README. Артефакты не пересобирались: опубликованная версия и её содержимое
+остаются проверенными исходными файлами. Пользовательские experiments не менялись;
+их SHA-256 повторно проверены. `git diff --check` — без ошибок.
+
+TestPyPI smoke завершён; работа остановлена. Production PyPI upload, npm publish,
+финальная версия `0.1.0`, push, tag, GitHub Release и другие интеграции не выполнялись.
 Занятую версию не перезаписывать: исправления требуют следующего согласованного RC.
